@@ -9,10 +9,6 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
-  "scripts": {
-    "build": "tsup --format esm,cjs --dts",
-    "test": "vitest run"
-  },
   "keywords": [],
   "author": "m10rten",
   "license": "MIT",

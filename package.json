@@ -16,9 +16,9 @@
   },
   "readme": "https://github.com/m10rten/ohfc#readme",
   "scripts": {
-    "build": "pnpm -r build",
+    "build": "pnpm -r exec tsup --format esm,cjs --dts",
     "lint": "eslint ./**/src/**/*.ts",
-    "test": "pnpm -r test",
+    "test": "pnpm -r exec vitest run",
     "typecheck": "pnpm -r exec tsc --noEmit",
     "test:coverage": "jest --coverage",
     "test:ci": "jest --ci --passWithNoTests",
