@@ -32,10 +32,10 @@ jobs:
       - run: pnpm install
         name: Install dependencies
 
-      - name: Verify Packages 🧷📦,⚡
-        run: pnpm run codestyle
+      - name: Check Packages 🧷📦,⚡
+        run: pnpm run check
 
-      - name: Check packages and create build 🧪,🔨,
+      - name: Verify packages and create build 🧪,🔨,
         run: pnpm run verify
         env:
           CI: true
