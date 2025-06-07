@@ -31,9 +31,10 @@ jobs:
       # codestyle
       - name: Codestyle 🎨
         run: pnpm run prettier:check
-      # lint
+      # typecheck
       - name: Typecheck 🧷
         run: pnpm run typecheck
+      # lint
       - name: Lint 🛫
         run: pnpm run lint
       # build

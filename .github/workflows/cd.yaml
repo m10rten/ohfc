@@ -32,9 +32,11 @@ jobs:
       - run: pnpm install
         name: Install dependencies
 
+      # check if the packages are valid (typecheck & lint)
       - name: Check Packages 🧷📦,⚡
         run: pnpm run check
 
+      # test and build to verify packages
       - name: Verify packages and create build 🧪,🔨,
         run: pnpm run verify
         env:
