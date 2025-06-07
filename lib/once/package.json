@@ -1,0 +1,41 @@
+{
+  "name": "@ohfc/once",
+  "version": "0.0.2",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "A tiny utility to ensure a function is called only once.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsup --format esm,cjs --dts",
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "m10rten",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "index": [
+        "dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ]
+}

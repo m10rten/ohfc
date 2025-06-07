@@ -1,0 +1,54 @@
+name: Continuos Deployment Workflow
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "./lib/**/src/**"
+      - ".github/workflows/cd.yaml"
+      - ".changeset/**"
+      - pnpm-lock.yaml
+      - package.json
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [22.x, 24.x]
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.1.0
+        with:
+          version: 9
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      # install
+      - run: pnpm install
+        name: Install dependencies
+
+      - name: Verify Packages 🧷📦,⚡
+        run: pnpm run codestyle
+
+      - name: Check packages and create build 🧪,🔨,
+        run: pnpm run verify
+        env:
+          CI: true
+
+      # publish
+      - name: Create release PR and publish packages
+        if: matrix.node-version == '24.x'
+        id: changesets
+        uses: changesets/action@v1.5.3
+        with:
+          commit: "chore(release): 📦 version packages"
+          title: "chore(release): 📦 version packages"
+          publish: pnpm exec changeset publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

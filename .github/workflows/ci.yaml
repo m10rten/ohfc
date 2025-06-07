@@ -1,0 +1,41 @@
+name: Continuos Integration Workflow
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - ".github/workflows/ci.yaml"
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [22.x, 24.x]
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.1.0
+        with:
+          version: 8
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      # install
+      - name: Install dependencies 📦
+        run: pnpm i --frozen-lockfile
+      # lint
+      - name: Typecheck 🧷
+        run: pnpm run typecheck
+      - name: Lint 🛫
+        run: pnpm run lint
+      # build
+      - name: Build 🏗
+        run: pnpm run build
+      # test
+      - name: Test 🧪
+        run: pnpm run test

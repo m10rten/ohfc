@@ -1,0 +1,51 @@
+{
+  "name": "ohfc",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "m10rten",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m10rten/ohfc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/m10rten/ohfc/issues"
+  },
+  "readme": "https://github.com/m10rten/ohfc#readme",
+  "scripts": {
+    "build": "pnpm -r build",
+    "lint": "eslint ./**/src/**/*.ts",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r exec tsc --noEmit",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --passWithNoTests",
+    "prettier:check": "prettier --check .",
+    "format": "prettier --write .",
+    "check": "pnpm typecheck && pnpm lint",
+    "verify": "pnpm build && pnpm test",
+    "release": "changeset publish",
+    "change": "changeset",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.29.4",
+    "@eslint/js": "9.28.0",
+    "@types/jest": "29.5.14",
+    "@types/node": "22.15.30",
+    "eslint": "9.28.0",
+    "husky": "9.1.7",
+    "prettier": "3.5.3",
+    "ts-node": "10.9.2",
+    "tsup": "8.5.0",
+    "tsx": "4.19.4",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.33.1",
+    "zod": "3.25.56"
+  },
+  "dependencies": {
+    "vitest": "3.2.2"
+  }
+}
