@@ -5,3 +5,4 @@
 ## 📦 packages
 
 - `@ohfc/once` - execute once.
+- `@ohfc/tiny-bus` - Tiny event emitter.
