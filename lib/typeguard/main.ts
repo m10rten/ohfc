@@ -9,7 +9,11 @@ if (t.string().is(value)) {
 const User = t.object({
   hobby: t.string().check((hobby) => hobby === "football", "Cannot like anything other then football"),
   name: t.string().check((name) => name.length > 3),
-  age: t.number().check((age) => age > 18 && age < 101),
+  age: t
+    .number()
+    .nullish()
+    .default(18)
+    .check((age) => !!age && age > 18 && age < 101),
 });
 
 type User = t.infer<typeof User>;
