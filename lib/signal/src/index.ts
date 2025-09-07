@@ -24,6 +24,9 @@ export class Signal<T> {
   /**
    * Get the current value of the signal.
    */
+  get value(): T {
+    return this._value;
+  }
   get(): T {
     return this._value;
   }
@@ -31,6 +34,13 @@ export class Signal<T> {
   /**
    * Set a new value to the signal and notify subscribers if it changed.
    */
+  set value(newValue: T) {
+    if (Object.is(this._value, newValue)) {
+      return;
+    }
+    this._value = newValue;
+    this.notify();
+  }
   set(newValue: T): void {
     if (Object.is(this._value, newValue)) {
       return;

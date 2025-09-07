@@ -57,6 +57,8 @@ importers:
 
   lib/signal: {}
 
+  lib/time-ago: {}
+
   lib/tiny-bus: {}
 
   lib/typeguard: {}

@@ -14,6 +14,12 @@ describe("Signal", () => {
     expect(s.get()).toBe("updated");
   });
 
+  it("should update the value with var.value=", () => {
+    const s = signal("initial");
+    s.value = "updated";
+    expect(s.value).toBe("updated");
+  });
+
   it("should notify subscribers when the value changes", () => {
     const s = signal(0);
     const callback = vi.fn();

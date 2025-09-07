@@ -5,4 +5,5 @@
 ## 📦 packages
 
 - `@ohfc/once` - execute once.
-- `@ohfc/tiny-bus` - Tiny event emitter.
+- `@ohfc/tiny-bus` - Tiny & Typed event emitter.
+- `@ohfc/signal` - Variable watcher emitter.
