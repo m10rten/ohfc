@@ -1,3 +1,5 @@
 packages:
+  - "!lib/_template"
+  - "!lib/_*"
   - lib/*
   - apps/*

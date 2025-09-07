@@ -1,0 +1,45 @@
+{
+  "name": "@ohfc/typeguard",
+  "version": "0.0.0",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "description": "Minimal, composable runtime type guards with TypeScript inference and safe value parsing.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "keywords": [
+    "typeguard",
+    "typescript",
+    "validation",
+    "type",
+    "runtime",
+    "inference",
+    "parse"
+  ],
+  "author": "m10rten",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "index": [
+        "dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ]
+}
