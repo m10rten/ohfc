@@ -1,23 +1,30 @@
-// example2.ts
 import { WorkerPool } from "./src/index.js";
 import { Readable } from "node:stream";
 
-// Worker file: worker-task.js
-// const { parentPort } = require("node:worker_threads");
-// parentPort.on("message", (data) => parentPort.postMessage(data + 1));
-
 async function main() {
   const pool = new WorkerPool<number>("./worker.mjs", {
-    eval: false,
-    threads: 4,
+    maxQueueSize: 10,
+    threads: 1,
   });
 
-  const source = Readable.from(Array.from({ length: 1000 }, (_, i) => i));
-  pool.attachStream(source);
+  // Create the source stream
+  const source = Readable.from(Array.from({ length: 100 }, (_, i) => i));
 
-  source.on("end", async () => {
-    console.log("Stream finished");
-    await pool.destroy();
+  // Handle flow control manually using pool.isQueueFull and pool.waitForSpace
+  source.on("data", async (chunk) => {
+    console.log(chunk, pool);
+    // Enqueue the chunk (task)
+    pool.run(chunk).catch((err) => {
+      console.error("Task error:", err);
+    });
+    // If queue is full, pause the stream and wait for space
+    if (pool.isQueueFull) {
+      source.pause();
+      await pool.waitForSpace();
+      return source.resume();
+    } else if (source.isPaused()) {
+      return source.resume();
+    }
   });
 }
 
