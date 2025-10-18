@@ -51,6 +51,8 @@ importers:
         specifier: 3.25.56
         version: 3.25.56
 
+  lib/deferred: {}
+
   lib/once: {}
 
   lib/period: {}
@@ -61,7 +63,11 @@ importers:
 
   lib/tiny-bus: {}
 
+  lib/tiny-pool: {}
+
   lib/typeguard: {}
+
+  lib/zap: {}
 
 packages:
   "@babel/code-frame@7.27.1":
