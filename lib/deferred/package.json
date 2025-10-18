@@ -1,23 +1,15 @@
 {
-  "name": "@ohfc/tiny-pool",
+  "name": "@ohfc/deferred",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "Tiny WorkerPool implementation with support for backpressure and streams",
+  "description": "Promise based defer-pattern, promises without the callbacks.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
-  "keywords": [
-    "node:worker_threads",
-    "node:stream",
-    "worker_threads",
-    "worker_pool",
-    "pool",
-    "node worker pool",
-    "back pressure"
-  ],
+  "keywords": [],
   "author": "m10rten",
   "license": "MIT",
   "exports": {

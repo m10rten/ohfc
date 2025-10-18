@@ -6,4 +6,6 @@
 
 - `@ohfc/once` - execute once.
 - `@ohfc/tiny-bus` - Tiny & Typed event emitter.
-- `@ohfc/signal` - Variable watcher emitter.
+- `@ohfc/signal` - Variable state changes.
+- `@ohfc/deferred` - Promise resolve and reject without callbacks.
+- `@ohfc/tiny-pool` - Simple managed pool for node:worker_threads.
