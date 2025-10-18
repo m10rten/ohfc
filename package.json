@@ -18,10 +18,9 @@
   "scripts": {
     "build": "pnpm -r exec tsup --format esm,cjs --dts",
     "lint": "eslint ./**/src/**/*.ts",
-    "test": "pnpm -r exec vitest run",
+    "test": "pnpm -r exec vitest run --passWithNoTests",
     "typecheck": "pnpm -r exec tsc --noEmit",
     "test:coverage": "pnpm -r exec vitest run --coverage",
-    "test:ci": "pnpm -r exec vitest run --passWithNoTests",
     "prettier:check": "prettier --check .",
     "format": "prettier --write .",
     "check": "pnpm typecheck && pnpm lint",
