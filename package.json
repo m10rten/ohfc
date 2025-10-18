@@ -20,8 +20,8 @@
     "lint": "eslint ./**/src/**/*.ts",
     "test": "pnpm -r exec vitest run",
     "typecheck": "pnpm -r exec tsc --noEmit",
-    "test:coverage": "jest --coverage",
-    "test:ci": "jest --ci --passWithNoTests",
+    "test:coverage": "pnpm -r exec vitest run --coverage",
+    "test:ci": "pnpm -r exec vitest run --passWithNoTests",
     "prettier:check": "prettier --check .",
     "format": "prettier --write .",
     "check": "pnpm typecheck && pnpm lint",
@@ -33,7 +33,6 @@
   "devDependencies": {
     "@changesets/cli": "2.29.4",
     "@eslint/js": "9.28.0",
-    "@types/jest": "29.5.14",
     "@types/node": "22.15.30",
     "eslint": "9.28.0",
     "husky": "9.1.7",
